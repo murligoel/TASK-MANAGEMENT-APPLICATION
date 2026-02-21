@@ -41,7 +41,6 @@ public class TaskManagerService {
         if(!Objects.isNull(task.getDueDate())) {
             validateDueDate(task.getDueDate());
         }
-        Long lId = Long.parseLong(id);
         Task existingTask = taskManagerRepository.findById(Long.parseLong(id)).orElse(null);
         if(existingTask != null) {
             if(!Objects.isNull(task.getTitle())) {
