@@ -1,7 +1,6 @@
-GET  http://localhost:8080/tasks/2
+GET http://localhost:8080/tasks
 Content-Type: application/json
 
 {
-  "title": "Finish assignment 1 edit edit edit",
-  "completed": false
+  "title": "Finish assignment 2"
 }

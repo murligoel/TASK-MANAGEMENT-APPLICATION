@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Task {
 
     @NotBlank(message = "Title is mandatory")
     @Column(nullable = false)
+    @Size(max = 100, message = "Title cannot exceed 100 characters")
     private String title;
 
     private String description;
