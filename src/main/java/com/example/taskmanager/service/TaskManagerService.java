@@ -34,7 +34,7 @@ public class TaskManagerService {
     }
 
     public Task getTaskWithId(String id) {
-        return taskManagerRepository.getReferenceById(Long.parseLong(id));
+        return taskManagerRepository.findById(Long.parseLong(id)).orElse(null);
     }
 
     public Task updateTaskWithId(String id, Task task) {
@@ -42,8 +42,8 @@ public class TaskManagerService {
             validateDueDate(task.getDueDate());
         }
         Long lId = Long.parseLong(id);
-        Task existingTask = taskManagerRepository.getReferenceById(lId);
-        if(!Objects.isNull(existingTask.getId())) {
+        Task existingTask = taskManagerRepository.findById(Long.parseLong(id)).orElse(null);
+        if(existingTask != null) {
             if(!Objects.isNull(task.getTitle())) {
                 existingTask.setTitle(task.getTitle());
             }
@@ -67,7 +67,7 @@ public class TaskManagerService {
     }
 
     public Long deleteTaskWithId(String id) {
-        Task task = taskManagerRepository.getReferenceById(Long.parseLong(id));
+        Task task = taskManagerRepository.findById(Long.parseLong(id)).orElse(null);
         if(task != null) {
             taskManagerRepository.deleteById(Long.parseLong(id));
             return Long.parseLong(id);
